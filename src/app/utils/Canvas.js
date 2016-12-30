@@ -57,9 +57,9 @@ export default class Canvas {
     }
 
     loop() {
+        requestAnimationFrame(this.loop);
+
         this.update();
         this.draw();
-
-        requestAnimationFrame(this.loop);
     }
 }
