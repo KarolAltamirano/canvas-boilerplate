@@ -1,13 +1,11 @@
 export default class Circle {
     constructor(ctx) {
         this.ctx = ctx;
-        this.radius = 200;
+        this.radius = 100;
     }
 
-    update() {
-        // TODO: implement
-        console.log(this);
-    }
+    // eslint-disable-next-line
+    update() { }
 
     draw(x, y, progress) {
         this.ctx.beginPath();

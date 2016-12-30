@@ -4,7 +4,7 @@ export default class Canvas {
         this.height = null;
         this.canvas = document.createElement('canvas');
         this.ctx = this.canvas.getContext('2d');
-        this.objects = [];
+        this.scene = null;
 
         el.appendChild(this.canvas);
 
@@ -16,50 +16,48 @@ export default class Canvas {
     }
 
     resize() {
-        this.scale = window.devicePixelRatio || 1;
+        this.ratio = window.devicePixelRatio || 1;
         this.width = window.innerWidth;
         this.height = window.innerHeight;
 
-        this.canvas.width = this.width * this.scale;
-        this.canvas.height = this.height * this.scale;
+        this.canvas.width = this.width * this.ratio;
+        this.canvas.height = this.height * this.ratio;
         this.canvas.style.width = `${this.width}px`;
         this.canvas.style.height = `${this.height}px`;
     }
 
-    addDisplayObject(object) {
-        this.objects = [...this.objects, object];
+    showScene(scene) {
+        this.scene = scene;
     }
 
-    removeDisplayObject(object) {
-        const id = this.objects.indexOf(object);
-
-        if (id > -1) {
-            this.objects.splice(id, 1);
-        }
+    removeScene() {
+        this.scene = null;
     }
 
-    ease() {
-        this.easeProgress = this.easeProgress || 0;
-
-        this.easeProgress += 0.02;
-
-        if (this.easeProgress >= 1) {
-            this.easeProgress = 1;
+    update() {
+        if (!this.scene) {
+            return;
         }
 
-        return this.easeProgress;
+        this.scene.update();
+    }
+
+    draw() {
+        this.ctx.save();
+        this.ctx.scale(this.ratio, this.ratio);
+
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        if (this.scene) {
+            this.scene.draw();
+        }
+
+        this.ctx.restore();
     }
 
     loop() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        for (let i = 0; i < this.objects.length; i++) {
-            this.objects[i].draw(
-                (this.scale * window.innerWidth) / 2,
-                (this.scale * window.innerHeight) / 2,
-                this.ease()
-            );
-        }
+        this.update();
+        this.draw();
 
         requestAnimationFrame(this.loop);
     }

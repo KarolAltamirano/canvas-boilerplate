@@ -1,8 +1,11 @@
 export default class Square {
     constructor(ctx) {
         this.ctx = ctx;
-        this.size = 400;
+        this.size = 200;
     }
+
+    // eslint-disable-next-line
+    update() { }
 
     draw(x, y, progress) {
         const x0 = x - (this.size / 2);
