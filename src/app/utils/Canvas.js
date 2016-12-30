@@ -1,5 +1,11 @@
+import Stats from 'stats.js';
+
 export default class Canvas {
     constructor(el) {
+        this.stats = new Stats();
+        this.stats.showPanel(1);
+        document.body.appendChild(this.stats.dom);
+
         this.width = null;
         this.height = null;
         this.canvas = document.createElement('canvas');
@@ -68,7 +74,9 @@ export default class Canvas {
     loop() {
         requestAnimationFrame(this.loop);
 
+        this.stats.begin();
         this.update();
         this.draw();
+        this.stats.end();
     }
 }
