@@ -27,6 +27,15 @@ export default class Canvas {
     }
 
     showScene(scene) {
+        if (this.scene) {
+            this.scene.remove().then(() => {
+                this.scene = scene;
+                this.scene.init();
+            });
+
+            return;
+        }
+
         this.scene = scene;
         this.scene.init();
     }

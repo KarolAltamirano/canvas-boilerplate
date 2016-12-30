@@ -14,6 +14,12 @@ export default class SceneOne {
         gsap.TweenMax.to(this, 0.4, { circleProgress: 1 });
     }
 
+    remove() {
+        return new Promise((resolve) => {
+            gsap.TweenMax.to(this, 0.4, { circleProgress: 0, onComplete: resolve });
+        });
+    }
+
     update() {
         this.circleX = window.innerWidth / 2;
         this.circleY = window.innerHeight / 2;

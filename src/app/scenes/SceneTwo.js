@@ -14,6 +14,12 @@ export default class SceneTwo {
         gsap.TweenMax.to(this, 0.4, { squareProgress: 1 });
     }
 
+    remove() {
+        return new Promise((resolve) => {
+            gsap.TweenMax.to(this, 0.4, { squareProgress: 0, onComplete: resolve });
+        });
+    }
+
     update() {
         this.squareX = window.innerWidth / 2;
         this.squareY = window.innerHeight / 2;
