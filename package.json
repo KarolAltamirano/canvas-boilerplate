@@ -10,7 +10,7 @@
     "server": "babel-node tools/run server",
     "start": "babel-node tools/run start",
     "lint": "eslint src test tools",
-    "test": "mocha --compilers js:babel-register test/utils/setup.js test/**/*.spec.js",
+    "test": "mocha --compilers js:babel-register test/**/*.spec.js",
     "test:watch": "yarn run test -- -w"
   },
   "devDependencies": {
