@@ -14,7 +14,7 @@ export default class SceneTwo {
         gsap.TweenMax.to(this, 0.4, { squareProgress: 1 });
     }
 
-    remove() {
+    destroy() {
         return new Promise((resolve) => {
             gsap.TweenMax.to(this, 0.4, { squareProgress: 0, onComplete: resolve });
         });

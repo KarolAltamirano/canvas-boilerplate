@@ -33,8 +33,8 @@ export default class Canvas {
     }
 
     showScene(scene) {
-        if (this.scene) {
-            this.scene.remove().then(() => {
+        if (this.scene && this.scene.destroy) {
+            this.scene.destroy().then(() => {
                 this.scene = scene;
                 this.scene.init();
             });
@@ -47,7 +47,13 @@ export default class Canvas {
     }
 
     removeScene() {
-        this.scene = null;
+        if (!this.scene || !this.scene.destroy) {
+            return;
+        }
+
+        this.scene.destroy().then(() => {
+            this.scene = null;
+        });
     }
 
     update() {
