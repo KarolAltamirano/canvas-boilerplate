@@ -66,6 +66,7 @@
     "debug": "^2.4.5",
     "gsap": "^1.19.0",
     "history": "^4.5.0",
+    "htmlhint-loader": "^1.1.0",
     "ismobilejs": "^0.4.0",
     "isomorphic-fetch": "^2.2.1",
     "mustache": "^2.3.0",
