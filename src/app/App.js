@@ -1,5 +1,6 @@
 import History from './History';
 import Store from './Store';
+import Control from './Control';
 import AppActions from './actions/AppActions';
 
 import Canvas from './utils/Canvas';
@@ -21,6 +22,9 @@ const App = {
         footer.render({ msg: copy.msg });
         footer.show();
 
+        // init control
+        Control.init();
+
         // create canvas
         const el = document.querySelector('.container');
         this.canvas = new Canvas(el);
@@ -29,28 +33,6 @@ const App = {
         router(this.canvas, {
             '/': new SceneOne(this.canvas.ctx),
             '/square': new SceneTwo(this.canvas.ctx)
-        });
-
-        el.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-
-            switch (Store.getState().router) {
-                // on beginning don't show anything
-                case null:
-                    break;
-
-                case '/':
-                    Store.dispatch(AppActions.router('/square'));
-                    break;
-
-                case '/square':
-                    Store.dispatch(AppActions.router('/'));
-                    break;
-
-                default:
-                    break;
-            }
         });
 
         Store.dispatch(AppActions.router(History.location.pathname));
