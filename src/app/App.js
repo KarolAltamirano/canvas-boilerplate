@@ -8,11 +8,20 @@ import SceneTwo from './scenes/SceneTwo';
 
 import router from './router';
 
+import copy from '../copy/copy.json';
+import Footer from './components/Footer/Footer';
+
 const App = {
     /**
      * Run application
      */
     run() {
+        // render footer
+        const footer = new Footer(document.body);
+        footer.render({ msg: copy.msg });
+        footer.show();
+
+        // create canvas
         const el = document.querySelector('.container');
         this.canvas = new Canvas(el);
         this.canvas.loop();
