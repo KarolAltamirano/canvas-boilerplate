@@ -4,15 +4,16 @@ import template from './footer.html';
 import style from './footer.scss';
 
 export default class Footer {
-    constructor(parent) {
+    constructor(el) {
+        this.el = el;
         this.container = document.createElement('div');
         this.hide();
 
-        parent.appendChild(this.container);
+        this.el.appendChild(this.container);
     }
 
     destroy() {
-        parent.removeChild(this.container);
+        this.el.removeChild(this.container);
     }
 
     render(copy) {
