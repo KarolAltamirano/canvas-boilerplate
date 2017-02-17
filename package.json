@@ -14,6 +14,7 @@
     "lint:all": "yarn run lint && yarn run lint:html && yarn run lint:style",
     "test": "mocha --compilers js:babel-register test/**/*.spec.js",
     "test:watch": "yarn run test -- -w",
+    "hooks:install": "node node_modules/husky/bin/install",
     "precommit": "yarn run lint:all && yarn run test"
   },
   "devDependencies": {
@@ -43,7 +44,7 @@
     "htmlhint-loader": "^1.1.1",
     "husky": "^0.13.1",
     "imports-loader": "^0.7.0",
-    "js-beautify": "^1.6.8",
+    "js-beautify": "^1.6.9",
     "json-loader": "^0.5.4",
     "mocha": "^3.2.0",
     "modernizr": "^3.3.1",
@@ -59,7 +60,8 @@
     "sinon": "^1.17.7",
     "style-loader": "^0.13.1",
     "stylelint": "^7.8.0",
-    "stylelint-config-standard": "^15.0.1",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-declaration-use-variable": "^1.6.0",
     "stylelint-order": "^0.2.2",
     "stylelint-scss": "^1.4.1",
     "webpack": "^1.14.0",
@@ -71,17 +73,17 @@
   "dependencies": {
     "babel-polyfill": "^6.22.0",
     "createjs-preloadjs": "^0.6.3",
-    "debug": "^2.6.0",
+    "debug": "^2.6.1",
     "gsap": "^1.19.1",
     "history": "^4.5.1",
     "ismobilejs": "^0.4.0",
-    "isomorphic-fetch": "^2.2.1",
     "mustache": "^2.3.0",
     "normalize.css": "^5.0.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.1",
     "redux-thunk": "^2.2.0",
     "stats.js": "^0.17.0",
-    "ua-parser-js": "^0.7.12"
+    "ua-parser-js": "^0.7.12",
+    "whatwg-fetch": "^2.0.2"
   }
 }
