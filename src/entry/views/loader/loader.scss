@@ -1,9 +1,11 @@
-/* src/entry/views/loader/loader.scss */
+/**
+ * @module loader.scss
+ */
 
 :global {
     .loader {
         display: none;
-        font-size: 1.6em;
+        font-size: $fontSize16;
         text-align: center;
     }
 }

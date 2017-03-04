@@ -1,15 +1,14 @@
-/* src/entry/style/global/_base.scss */
-
-@include border-box-sizing;
+/**
+ * @module _base.scss
+ */
 
 html {
-    font-size: 16px;
+    font-size: $fontSizeHtml;
 }
 
 body {
     color: $color03;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 62.5%; // 1em = 10px
 }
 
 a {
